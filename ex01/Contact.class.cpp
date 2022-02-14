@@ -1,20 +1,14 @@
 #include <iostream>
+#include <sstream>
 #include "Contact.class.hpp"
 
-Contact::Contact(
-		std::string firstname,
-		std::string lastname,
-		std::string nickname,
-		int  phone_number,
-		std::string darkest_secret) : _firstname(firstname),
-		_lastname(lastname),
-		_nickname(nickname),
-		_phone_number(phone_number),
-		_darkest_secret(darkest_secret) {
+Contact::Contact( void ) {
+    //std::cout << "create Contact" << std::endl;
 	return ;
 }
 
 Contact::~Contact( void ) {
+	//std::cout << "delete contact" << std::endl;
 	return ;
 }
 
@@ -35,28 +29,49 @@ std::string	Contact::getDarkest_secret( void ) const {
 	return (this->_darkest_secret);
 }
 
-void		Contact::setFirstname( std::string s) {
+int		Contact::setFirstname( std::string s) {
+	if (s.compare("\n") == -1)
+		return (0);
 	this->_firstname = s;
+	return (1);
 }
-void		Contact::setLastname( std::string s) {
+int			Contact::setLastname( std::string s) {
+	if (s.compare("\n") == -1)
+	return (0);
 	this->_lastname = s;
+	return (1);
 }
-void		Contact::setNickname( std::string s) {
+int			Contact::setNickname( std::string s) {
+	if (s.compare("\n") == -1)
+		return (0);
 	this->_nickname = s;
+	return (1);
 }
 int			Contact::setPhone_number( std::string n ) {
-	int	nb;
+	unsigned int	nb;
 	
-	sscanf(n.c_str(), "%d", &nb);
-	if (nb)
+	if (n.compare("\n") == -1)
+		return (0);
+	std::istringstream( n ) >> nb;
+	if (nb > 0)
 	{
-		std::cout << n << " | " << nb << std::endl;
 		this->_phone_number = nb;
 		return (1);
 	}
-	std::cout << n << "is not a number" << std::endl;
+	std::cout << n << " is not a number" << std::endl;
 	return (0);
 }
-void		Contact::setDarkest_secret( std::string s) {
+int			Contact::setDarkest_secret( std::string s) {
+	if (s.compare("\n") == -1)
+		return (0);
 	this->_darkest_secret = s;
+	return (1);
+}
+
+void		Contact::print_contact( void ) {
+	std::cout	<< "First name : " << this->getFirstname() << std::endl;
+	std::cout	<< "Last name : " << this->getLastname() << std::endl;
+	std::cout	<< "Nickname : " << this->getNickname() << std::endl;
+	std::cout	<< "Phone number : " << this->getPhone_number() << std::endl;
+	std::cout	<< "Darkest secret : " << this->getDarkest_secret() << std::endl;
 }

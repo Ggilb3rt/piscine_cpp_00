@@ -11,4 +11,5 @@ all :
 	$(COMPIL) $(FLAGS) $(SRC) -o $(NAME)
 
 test :
-	./$(NAME)
+	#./$(NAME)
+	./test.sh
