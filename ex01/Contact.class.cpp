@@ -16,38 +16,38 @@ Contact::~Contact( void ) {
 std::string    Contact::getFirstname( void ) const {
 	return (this->_firstname);
 }
-std::string	Contact::getLastname( void ) const {
+std::string		Contact::getLastname( void ) const {
 	return (this->_lastname);
 }
-std::string	Contact::getNickname( void ) const {
+std::string		Contact::getNickname( void ) const {
     return (this->_nickname);
 }
-int			Contact::getPhone_number( void ) const {
+int				Contact::getPhone_number( void ) const {
     return (this->_phone_number);
 }
 std::string	Contact::getDarkest_secret( void ) const {
 	return (this->_darkest_secret);
 }
 
-int		Contact::setFirstname( std::string s) {
+int				Contact::setFirstname( std::string s) {
 	if (s.compare("\n") == -1)
 		return (0);
 	this->_firstname = s;
 	return (1);
 }
-int			Contact::setLastname( std::string s) {
+int				Contact::setLastname( std::string s) {
 	if (s.compare("\n") == -1)
 	return (0);
 	this->_lastname = s;
 	return (1);
 }
-int			Contact::setNickname( std::string s) {
+int				Contact::setNickname( std::string s) {
 	if (s.compare("\n") == -1)
 		return (0);
 	this->_nickname = s;
 	return (1);
 }
-int			Contact::setPhone_number( std::string n ) {
+int				Contact::setPhone_number( std::string n ) {
 	unsigned int	nb;
 	
 	if (n.compare("\n") == -1)
@@ -61,14 +61,14 @@ int			Contact::setPhone_number( std::string n ) {
 	std::cout << n << " is not a number" << std::endl;
 	return (0);
 }
-int			Contact::setDarkest_secret( std::string s) {
+int				Contact::setDarkest_secret( std::string s) {
 	if (s.compare("\n") == -1)
 		return (0);
 	this->_darkest_secret = s;
 	return (1);
 }
 
-void		Contact::print_contact( void ) {
+void			Contact::print_contact( void ) const {
 	std::cout	<< "First name : " << this->getFirstname() << std::endl;
 	std::cout	<< "Last name : " << this->getLastname() << std::endl;
 	std::cout	<< "Nickname : " << this->getNickname() << std::endl;

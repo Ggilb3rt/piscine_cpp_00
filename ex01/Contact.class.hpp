@@ -1,3 +1,4 @@
+
 #ifndef CONTACT_CLASS_H
 # define CONTACT_CLASS_H
 
@@ -25,7 +26,7 @@ class Contact {
 		int			setNickname( std::string s);
 		int			setPhone_number( std::string n);
 		int			setDarkest_secret( std::string s);
-		void		print_contact( void );
+		void		print_contact( void ) const;
 };
 
 #endif

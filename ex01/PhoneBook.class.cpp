@@ -74,7 +74,7 @@ void    Display(std::string s)
         std::cout << std::setw(PRINT_WIDTH) << s << "|";
 }
 
-void    PhoneBook::search( void ) {
+void    PhoneBook::search( void ) const {
     int         i = 0;
     std::string choose;
 

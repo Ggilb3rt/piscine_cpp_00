@@ -1,15 +1,29 @@
 #Coucou
 
 NAME = phonebook
-FLAGS = -Wall -Wextra -Werror -std=c++98
-COMPIL = c++
+FLAGS = -Wall -Wextra -Werror 
+STD = -std=c++98
+COMPIL = clang++
 SRC = main.cpp PhoneBook.class.cpp Contact.class.cpp
+OBJ = $(SRC:.cpp=.o)
 
-.PHONY : all test
+.PHONY : all re fclean clean
 
-all :
-	$(COMPIL) $(FLAGS) $(SRC) -o $(NAME)
+%.o: %.cpp
+	$(COMPIL) $(FLAGS) $(STD) -o $@ -c $<
 
-test :
-	#./$(NAME)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(COMPIL) $(FLAGS) $(STD) -o $(NAME) $(OBJ)
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+test : all
 	./test.sh
