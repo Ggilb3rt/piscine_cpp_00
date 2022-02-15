@@ -1,6 +1,6 @@
 #include <iostream>
+#include <iomanip>
 #include <ctime>
-#include <sstream>
 #include "Account.hpp"
 
 
@@ -8,6 +8,19 @@ int  Account::_nbAccounts = 0;
 int  Account::_totalAmount = 0;
 int  Account::_totalNbDeposits = 0;
 int  Account::_totalNbWithdrawals = 0;
+
+Account::Account( void ) : 
+            _accountIndex(_nbAccounts),
+            _amount(0),
+            _nbDeposits(0),
+            _nbWithdrawals(0) {
+    _nbAccounts++;
+    Account::_displayTimestamp();
+    std::cout << " index:" << this->_accountIndex;
+    std::cout << ";amount:" << this->_amount;
+    std::cout << ";created" << std::endl;
+    return ;
+}
 
 Account::Account( int initial_deposit ) : 
             _accountIndex(_nbAccounts),
@@ -83,7 +96,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
         std::cout << " index:" << this->_accountIndex;
         std::cout << ";p_amount:" << this->_amount;
         std::cout << ";withdrawal:";
-        if (this->_amount - withdrawal < 0)
+        if (checkAmount() - withdrawal < 0)
         {
             std::cout << "refused" << std::endl;
             return (false);
@@ -107,7 +120,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 }
 
 int		Account::checkAmount( void ) const {
-    return (0);
+    return (this->_amount);
 }
 
 void	Account::displayStatus( void ) const {
@@ -118,30 +131,11 @@ void	Account::displayStatus( void ) const {
     std::cout << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
-
-/* CREATE TIMESTAMP */
-void    concatenate_0_date(std::ostringstream *conv, int time)
-{
-    if (time < 10)
-        *conv << "0" << time; 
-    else
-        *conv << time;
-}
-
 void    Account::_displayTimestamp( void ) {
     std::time_t now = std::time(NULL);
     std::tm*            pnow;
-    std::string         print;
-    std::ostringstream  conv;
 
     pnow = gmtime(&now);
-    conv << pnow->tm_year + 1900;
-    concatenate_0_date(&conv, pnow->tm_mon + 1);
-    concatenate_0_date(&conv, pnow->tm_mday); 
-    conv << "_";
-    concatenate_0_date(&conv, pnow->tm_hour);
-    concatenate_0_date(&conv, pnow->tm_min);
-    concatenate_0_date(&conv, pnow->tm_sec);
-    print = conv.str();
-    std::cout << "[" << print << "]";
+    std::cout << "[" << std::put_time(pnow, "%Y%m%d_%H%M%S") << "]";
+    // std::cout << "[" << "19920104_091532" << "]";
 }

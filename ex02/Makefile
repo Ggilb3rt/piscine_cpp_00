@@ -16,12 +16,16 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(COMPIL) $(FLAGS) $(STD) -o $@ $(OBJ)
-	./$(NAME)
 
 clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) out
 
 re: fclean all
+
+test:
+	./$(NAME) > out
+	diff out 19920104_091532.log
+	rm out

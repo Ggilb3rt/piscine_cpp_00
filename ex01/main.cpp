@@ -17,7 +17,6 @@ int main(void)
 	{
 		if (buff == "ADD")
 			repertoire.add();
-			//repertoire::add();
 		else if (buff == "SEARCH")
 			repertoire.search();
 		else

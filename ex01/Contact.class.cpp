@@ -25,7 +25,7 @@ std::string		Contact::getNickname( void ) const {
 int				Contact::getPhone_number( void ) const {
     return (this->_phone_number);
 }
-std::string	Contact::getDarkest_secret( void ) const {
+std::string		Contact::getDarkest_secret( void ) const {
 	return (this->_darkest_secret);
 }
 
@@ -37,7 +37,7 @@ int				Contact::setFirstname( std::string s) {
 }
 int				Contact::setLastname( std::string s) {
 	if (s.compare("\n") == -1)
-	return (0);
+		return (0);
 	this->_lastname = s;
 	return (1);
 }

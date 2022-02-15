@@ -10,6 +10,9 @@ SRC = megaphone.cpp
 all :
 	$(COMPIL) $(FLAGS) $(SRC) -o $(NAME)
 
+clean:
+	rm $(NAME)
+
 test :
 	./$(NAME) "shhhhh... I think the students are asleep..."
 	./$(NAME) Damnit " ! " "Sorry students, I thought this thing was off."

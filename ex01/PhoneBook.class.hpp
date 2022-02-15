@@ -7,7 +7,7 @@
 class PhoneBook {
 	private:
 		int			_current;
-		int			_max;
+		int			_current_max;
 		Contact		_list[PHONE_BOOK_MAX];
 
 	public:

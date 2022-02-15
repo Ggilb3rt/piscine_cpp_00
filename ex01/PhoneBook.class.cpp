@@ -5,7 +5,7 @@
 #include "Contact.class.hpp"
 #include "PhoneBook.class.hpp"
 
-PhoneBook::PhoneBook( void ) : _current( 0 ), _max ( 0 ) {
+PhoneBook::PhoneBook( void ) : _current( 0 ), _current_max ( 0 ) {
     return ;
 }
 
@@ -16,7 +16,7 @@ PhoneBook::~PhoneBook( void ) {
 void    PhoneBook::add( void ) {
     std::string infos;
 
-    if (this->_current >= 8)
+    if (this->_current >= PHONE_BOOK_MAX)
     {
         this->_current = 0;
         std::cout << "Max contact reach, older contact will be rewrite." << std::endl;
@@ -62,8 +62,8 @@ void    PhoneBook::add( void ) {
     }
     std::cout << std::endl << "Contact add in phone book (index " << this->_current << ")" << std::endl;
     this->_current++;
-    if (this->_max < PHONE_BOOK_MAX - 1)
-        this->_max++;
+    if (this->_current_max < PHONE_BOOK_MAX - 1)
+        this->_current_max++;
 }
 
 void    Display(std::string s)
@@ -79,14 +79,14 @@ void    PhoneBook::search( void ) const {
     std::string choose;
 
 
-    if (this->_max > 0)
+    if (this->_current_max > 0)
     {
         Display("Index");
         Display("First Name pouet");
         Display("Last Name");
         Display("Nickname");
         std::cout << std::endl;
-        while (i < this->_max)
+        while (i < this->_current_max)
         {
             std::ostringstream index;
             index << i;
@@ -101,13 +101,13 @@ void    PhoneBook::search( void ) const {
         std::getline(std::cin, choose);
         if ((std::istringstream( choose ) >> i) != 0)
         {
-            if (i < this->_max)
+            if (i < this->_current_max)
                 this->_list[i].print_contact();
             else
                 std::cout << "Index invalid." << std::endl;
         }
         else
-            std::cout << "Need number between 0 and " << this->_max - 1 << std::endl;
+            std::cout << "Need number between 0 and " << this->_current_max - 1 << std::endl;
     }
     else
         std::cout << std::endl << "Phone book is empty." << std::endl;
