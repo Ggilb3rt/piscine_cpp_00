@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <ctime>
 #include "Account.hpp"
 
@@ -131,11 +132,41 @@ void	Account::displayStatus( void ) const {
     std::cout << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
+
+/* CREATE TIMESTAMP */
+void    concatenate_0_date(std::ostringstream *conv, int time)
+{
+    if (time < 10)
+        *conv << "0" << time; 
+    else
+        *conv << time;
+}
+
 void    Account::_displayTimestamp( void ) {
     std::time_t now = std::time(NULL);
     std::tm*            pnow;
+    std::string         print;
+    std::ostringstream  conv;
 
     pnow = gmtime(&now);
-    std::cout << "[" << std::put_time(pnow, "%Y%m%d_%H%M%S") << "]";
+    conv << pnow->tm_year + 1900;
+    concatenate_0_date(&conv, pnow->tm_mon + 1);
+    concatenate_0_date(&conv, pnow->tm_mday); 
+    conv << "_";
+    concatenate_0_date(&conv, pnow->tm_hour);
+    concatenate_0_date(&conv, pnow->tm_min);
+    concatenate_0_date(&conv, pnow->tm_sec);
+    print = conv.str();
+    std::cout << "[" << print << "]";
     // std::cout << "[" << "19920104_091532" << "]";
 }
+
+
+// c++11
+// void    Account::_displayTimestamp( void ) {
+//     std::time_t now = std::time(NULL);
+//     std::tm*            pnow;
+
+//     pnow = gmtime(&now);
+//     std::cout << "[" << std::put_time(pnow, "%Y%m%d_%H%M%S") << "]";
+// }
