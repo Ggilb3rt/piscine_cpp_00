@@ -62,7 +62,7 @@ void    PhoneBook::add( void ) {
     }
     std::cout << std::endl << "Contact add in phone book (index " << this->_current << ")" << std::endl;
     this->_current++;
-    if (this->_current_max < PHONE_BOOK_MAX - 1)
+    if (this->_current_max < PHONE_BOOK_MAX)
         this->_current_max++;
 }
 
