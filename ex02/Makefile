@@ -3,7 +3,7 @@
 NAME = account
 STD = -std=c++98
 FLAGS = -Wall -Wextra -Werror
-COMPIL = clang++
+COMPIL = c++
 SRC = tests.cpp Account.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
