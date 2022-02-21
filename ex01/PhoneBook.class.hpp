@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
+#include "Contact.class.hpp"
 
 # define PRINT_WIDTH 10 
 # define PHONE_BOOK_MAX 8

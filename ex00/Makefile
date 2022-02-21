@@ -1,19 +1,31 @@
 #Coucou
 
 NAME = megaphone
-FLAGS = -Wall -Wextra -Werror -std=c++98
+STD = -std=c++98
+FLAGS = -Wall -Wextra -Werror
 COMPIL = c++
 SRC = megaphone.cpp
+OBJ = $(SRC:%.cpp=%.o)
 
-.PHONY : all test
+.PHONY : all clean fclean re test
 
-all :
-	$(COMPIL) $(FLAGS) $(SRC) -o $(NAME)
+%.o: %.cpp
+	$(COMPIL) $(FLAGS) $(STD) -o $@ -c $<
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(COMPIL) $(FLAGS) $(STD) -o $@ $(OBJ)
 
 clean:
-	rm $(NAME)
+	rm -rf $(OBJ)
 
-test :
+fclean: clean
+	rm -rf $(NAME) out
+
+re: fclean all
+
+test : all
 	./$(NAME) "shhhhh... I think the students are asleep..."
 	./$(NAME) Damnit " ! " "Sorry students, I thought this thing was off."
 	./$(NAME)

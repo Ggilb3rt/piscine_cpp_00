@@ -7,7 +7,7 @@ COMPIL = c++
 SRC = main.cpp PhoneBook.class.cpp Contact.class.cpp
 OBJ = $(SRC:.cpp=.o)
 
-.PHONY : all re fclean clean
+.PHONY : all re fclean clean test
 
 %.o: %.cpp
 	$(COMPIL) $(FLAGS) $(STD) -o $@ -c $<

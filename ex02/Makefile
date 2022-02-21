@@ -7,7 +7,7 @@ COMPIL = c++
 SRC = tests.cpp Account.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
-.PHONY : all
+.PHONY : all re fclean clean test
 
 %.o: %.cpp
 	$(COMPIL) $(FLAGS) $(STD) -o $@ -c $<
