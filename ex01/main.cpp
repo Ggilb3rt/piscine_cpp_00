@@ -12,9 +12,10 @@ int main(void)
 
 	std::cout << "[sing]Suuuper repertoooiiireee deux miiiiilee[/sing]" << std::endl;
 	std::cout << "Usage : ADD or SEARCH or EXIT" << std::endl;
-	std::getline(std::cin, buff);
-	while (buff.compare("EXIT") != 0)
+	while (std::getline(std::cin, buff))
 	{
+		if (buff.compare("EXIT") == 0)
+			break ;
 		if (buff == "ADD")
 			repertoire.add();
 		else if (buff == "SEARCH")
@@ -23,7 +24,6 @@ int main(void)
 		{
 			std::cout <<  std::endl << "Invalid cmd." << std::endl;
 		}
-		std::getline(std::cin, buff);
 	}
 	return (0);
 }

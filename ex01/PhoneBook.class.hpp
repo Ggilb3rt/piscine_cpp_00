@@ -12,9 +12,9 @@
 
 class PhoneBook {
 	private:
-		int			_current;
-		int			_current_max;
-		Contact		_list[PHONE_BOOK_MAX];
+		unsigned int	_current;
+		unsigned int	_current_max;
+		Contact			_list[PHONE_BOOK_MAX];
 
 	public:
 		PhoneBook( void );

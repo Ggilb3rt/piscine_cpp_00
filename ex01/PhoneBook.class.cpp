@@ -22,43 +22,43 @@ void    PhoneBook::add( void ) {
         std::cout << "Max contact reach, older contact will be rewrite." << std::endl;
     }
     std::cout << "First name : ";
-    std::getline(std::cin, infos);
-    while ((this->_list[this->_current].setFirstname(infos)) == 0)
+    while (std::getline(std::cin, infos))
     {
+        if ((this->_list[this->_current].setFirstname(infos)) != 0)
+            break ;
         std::cout << "First name : ";
-        std::getline(std::cin, infos);
     }
 
     std::cout << "Last name : ";
-    std::getline(std::cin, infos);
-    while ((this->_list[this->_current].setLastname(infos)) == 0)
+    while (std::getline(std::cin, infos))
     {
+        if ((this->_list[this->_current].setLastname(infos)) != 0)
+            break;
         std::cout << "Last name : ";
-        std::getline(std::cin, infos);
     }
 
     std::cout << "Nickname : ";
-    std::getline(std::cin, infos);
-    while ((this->_list[this->_current].setNickname(infos)) == 0)
+    while (std::getline(std::cin, infos))
     {
+        if ((this->_list[this->_current].setNickname(infos)) != 0)
+            break ;
         std::cout << "Nickname : ";
-        std::getline(std::cin, infos);    
     }
 
     std::cout << "Phone number : ";
-    std::getline(std::cin, infos);
-    while ((this->_list[this->_current].setPhone_number(infos)) == 0)
+    while (std::getline(std::cin, infos))
     {
+        if ((this->_list[this->_current].setPhone_number(infos)) != 0)
+            break ;
         std::cout << "Phone number : ";
-        std::getline(std::cin, infos);
     }
 
     std::cout << "Darkest secret : ";
-    std::getline(std::cin, infos);
-    while ((this->_list[this->_current].setDarkest_secret(infos)) == 0)
+    while (std::getline(std::cin, infos))
     {
+        if ((this->_list[this->_current].setDarkest_secret(infos)) != 0)
+            break ;
         std::cout << "Darkest secret : ";
-        std::getline(std::cin, infos);
     }
     std::cout << std::endl << "Contact add in phone book (index " << this->_current << ")" << std::endl;
     this->_current++;
@@ -75,7 +75,7 @@ void    Display(std::string s)
 }
 
 void    PhoneBook::search( void ) const {
-    int         i = 0;
+    unsigned int         i = 0;
     std::string choose;
 
 
